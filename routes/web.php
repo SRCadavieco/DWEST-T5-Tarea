@@ -19,8 +19,8 @@ Route::middleware('auth')->group(function () {
 });
 
 
-// Lista todas las mascotas
-Route::get('/mascotas', [PostController::class, 'index'])->name('post.index');
+// Lista todas los Posts
+Route::get('/post', [PostController::class, 'index'])->name('post.index');
 
 // Muestra formulario para crear una Post
 Route::get('/post/create', [PostController::class, 'create'])->name('post.create');
