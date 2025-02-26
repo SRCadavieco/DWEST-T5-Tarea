@@ -47,10 +47,10 @@ Route::get('/categoria', [CategoriaController::class, 'index'])->name('categoria
 Route::get('/categoria/create', [CategoriaController::class, 'index'])->name('categoria.create');
 
 // Guardar la categoria y redirigir al listado
-Route::post('/categoria', [CategoriaController::class, 'index'])->name('categoria.store');
+Route::post('/categoria', [CategoriaController::class, 'store'])->name('categoria.store');
 
 //Eliminar una categoria
-Route::delete('/categoria/{id}', [CategoriaController::class, 'index'])->name('categoria.destroy');
+Route::delete('/categoria/{id}', [CategoriaController::class, 'destroy'])->name('categoria.destroy');
 
 
 
