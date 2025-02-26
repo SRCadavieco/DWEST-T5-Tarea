@@ -29,6 +29,7 @@ class PostController extends Controller
         }
 
         $validated['user_id'] = $request->user()->id;
+        $validated['categoria_id'] = $request->categoria()->id;
 
         Post::create($validated);
 

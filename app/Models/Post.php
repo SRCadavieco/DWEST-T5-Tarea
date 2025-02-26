@@ -18,6 +18,10 @@ public function user()
 {
     return $this->belongsTo(User::class);
 }
+public function categoria()
+{
+    return $this->belongsTo(Categoria::class);
+}
 
 
 
