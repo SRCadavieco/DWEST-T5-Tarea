@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
+
+use function Pest\Laravel\post;
 
 class PostController extends Controller
 {
@@ -22,6 +25,10 @@ class PostController extends Controller
             $validated['image'] = $request->file('image')->store('images', 'public');
         }
 
-        $validated['user_id'] = $request->user()->id;
+        //$validated['user_id'] = $request->user()->id;
+
+        Post::create($validated);
+
+        //return view('post.index', compact('post'));
     }
 }
