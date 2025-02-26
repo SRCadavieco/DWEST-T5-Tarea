@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Http\Controllers\Auth;
+use App\Models\Categoria;
 
 use function Pest\Laravel\post;
 
@@ -14,26 +15,39 @@ class PostController extends Controller
         $post = Post::all();
         return view('post.index',compact('post'));
     }
-    public function create(){
-        return view ('post.create');
+    public function create()
+    {
+        // Obtén todas las categorías disponibles
+        $categorias = Categoria::all();
+    
+        // Pásalas a la vista
+        return view('post.create', compact('categorias'));
     }
-    public function store(Request $request){
+    public function store(Request $request)
+    {
+        
+        // Validar los datos enviados por el formulario
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string|max:255',
-            'image' => 'nullable|image|max:2048'
-            
+            'image' => 'nullable|image|max:2048',
+            'categoria_id' => 'required|exists:categorias,id'
         ]);
-        if ($request->hasFile('image')){
+    
+        // Manejar la carga de archivos si hay una imagen
+        if ($request->hasFile('image')) {
             $validated['image'] = $request->file('image')->store('images', 'public');
         }
-
+    
+        // Asignar el ID del usuario autenticado
         $validated['user_id'] = $request->user()->id;
-        $validated['categoria_id'] = $request->categoria()->id;
-
+        
+    
+        // Crear el post con los datos validados
         Post::create($validated);
-
-        return view('post.index', compact('post'));
+    
+        // Redirigir a la lista de posts con un mensaje de éxito
+        return redirect()->route('post.index')->with('success', 'Post creado con éxito.');
     }
     public function edit(string $id)
     {

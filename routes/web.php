@@ -44,7 +44,7 @@ Route::put('/post/{id}', [PostController::class, 'update'])->name('post.update')
 Route::get('/categoria', [CategoriaController::class, 'index'])->name('categoria.index');
 
 //Crear categorias
-Route::get('/categoria/create', [CategoriaController::class, 'index'])->name('categoria.create');
+Route::get('/categoria/create', [CategoriaController::class, 'create'])->name('categoria.create');
 
 // Guardar la categoria y redirigir al listado
 Route::post('/categoria', [CategoriaController::class, 'store'])->name('categoria.store');

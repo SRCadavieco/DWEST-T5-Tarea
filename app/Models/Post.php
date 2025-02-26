@@ -10,7 +10,7 @@ protected $fillable = [
     'title',
     'content',
     'image',
-    'category_id',
+    'categoria_id',
     'user_id',
 ];
 
@@ -20,7 +20,7 @@ public function user()
 }
 public function categoria()
 {
-    return $this->belongsTo(Categoria::class);
+    return $this->belongsTo(Categoria::class, 'categoria_id');
 }
 
 
