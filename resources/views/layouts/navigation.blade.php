@@ -25,7 +25,7 @@
                 @auth
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('post.create')" :active="request()->routeIs('post.create')">
-                        {{ ('Nueva mascota') }}
+                        {{ ('Nuevo post') }}
                     </x-nav-link>
                 </div>
                 @endauth
@@ -94,7 +94,7 @@
                 {{ ('Ver post') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('post.create')" :active="request()->routeIs('post.create')">
-                {{ ('Crear Mascota') }}
+                {{ ('Crear post') }}
             </x-responsive-nav-link>
         </div>
 
