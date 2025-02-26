@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CategoriaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -38,5 +39,21 @@ Route::get('/post/{id}/edit', [PostController::class, 'edit'])->name('post.edit'
 
 // Guarda los cambios sobre una Post
 Route::put('/post/{id}', [PostController::class, 'update'])->name('post.update');
+
+//Listar todas las categorias
+Route::get('/categoria', [CategoriaController::class, 'index'])->name('categoria.index');
+
+//Crear categorias
+Route::get('/categoria/create', [CategoriaController::class, 'index'])->name('categoria.create');
+
+// Guardar la categoria y redirigir al listado
+Route::post('/categoria', [CategoriaController::class, 'index'])->name('categoria.store');
+
+//Eliminar una categoria
+Route::delete('/categoria/{id}', [CategoriaController::class, 'index'])->name('categoria.destroy');
+
+
+
+
 
 require __DIR__.'/auth.php';
