@@ -22,16 +22,17 @@ class PostController extends Controller
             'title' => 'required|string|max:255',
             'content' => 'required|string|max:255',
             'image' => 'nullable|image|max:2048'
+            
         ]);
         if ($request->hasFile('image')){
             $validated['image'] = $request->file('image')->store('images', 'public');
         }
 
-        //$validated['user_id'] = $request->user()->id;
+        $validated['user_id'] = $request->user()->id;
 
         Post::create($validated);
 
-        //return view('post.index', compact('post'));
+        return view('post.index', compact('post'));
     }
     public function edit(string $id)
     {

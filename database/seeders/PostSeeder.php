@@ -15,17 +15,20 @@ class PostSeeder extends Seeder
         Post::create([
             'title' => 'ChatGPT, es  inutil?',
             'content' => 'Sabe bastante  menos que yo',
-            
+            'user_id' => 1,
+           
         ]);
         Post::create([
             'title' => 'Pedro sanchez',
             'content' => 'Asi es, volvio a mentir',
+            'user_id' => 1,
            
         ]);
         Post::create([
             'title' => 'Laravel',
             'content' => 'Abro debate del tema laravel',
-            
+            'user_id' => 1,
+           
         ]);
     }
 }

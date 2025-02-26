@@ -9,8 +9,8 @@
             @endif
         <h3>{{$entrada->title}}</h3>
         <p>{{$entrada->content}}</p>
-
-
-        </div>
+        <p>Autor: {{$entrada->user->name}}</p>
+    </div>
+    <hr>
     @endforeach
 </x-app-layout>
