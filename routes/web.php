@@ -5,9 +5,11 @@ use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('post.create');
+    return view('welcome');
 });
 
+
+Route::get('/', [PostController::class, 'index'])->name('post.index');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
