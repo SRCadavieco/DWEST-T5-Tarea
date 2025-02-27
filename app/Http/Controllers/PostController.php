@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
-use App\Http\Controllers\Auth;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Categoria;
 
 use function Pest\Laravel\post;
@@ -46,12 +46,17 @@ class PostController extends Controller
         // Crear el post con los datos validados
         Post::create($validated);
     
-        // Redirigir a la lista de posts con un mensaje de éxito
+        // Redirigir a la lista de posts 
         return redirect()->route('post.index')->with('success', 'Post creado con éxito.');
     }
     public function edit(string $id)
     {
-
+        $post = Post::findOrFail($id);
+        $categorias = Categoria::all();
+        if($post->user_id !== Auth::id()){
+            abort(403, 'No tiene permiso para editar esta post');
+        }
+        return view('post.edit', compact('post','categorias'));
     }
 
     /**
@@ -61,21 +66,22 @@ class PostController extends Controller
     {
         // Validar los datos
         $validated = $request->validate([
-            'nombre' => 'required|string|max:255',
-            'especie' => 'required|string|max:255',
-            'descripcion' => 'nullable|string',
-            'fecha_nacimiento' => 'nullable|date',
-            'foto' => 'nullable|image|max:2048'
+            'title' => 'required|string|max:255',
+            'content' => 'required|string|max:255',
+            'image' => 'nullable|image|max:2048',
+            'categoria_id' => 'required'
         ]);
 
-        // Recuperar mascota
+        // Recuperar post
         $post = Post::findOrFail($id);
+
+     
 
         // Guardar los datos
         $post->update($validated);
 
         // Redirigir
-        return redirect()->route('post.index')->with('success', 'post modificada con éxito');
+        return redirect()->route('post.index')->with('success', 'post modificado con éxito');
     }
 
     /**

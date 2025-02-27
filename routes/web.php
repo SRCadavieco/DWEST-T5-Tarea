@@ -40,6 +40,11 @@ Route::get('/post/{id}/edit', [PostController::class, 'edit'])->name('post.edit'
 // Guarda los cambios sobre una Post
 Route::put('/post/{id}', [PostController::class, 'update'])->name('post.update');
 
+
+
+
+
+
 //Listar todas las categorias
 Route::get('/categoria', [CategoriaController::class, 'index'])->name('categoria.index');
 
