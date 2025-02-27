@@ -29,6 +29,13 @@
                     </x-nav-link>
                 </div>
                 @endauth
+                @auth
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('categoria.index')" :active="request()->routeIs('categoria.index')">
+                        {{ ('Crear Categoria') }}
+                    </x-nav-link>
+                </div>
+                @endauth
             </div>
 
             <!-- Settings Dropdown -->
@@ -95,6 +102,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('post.create')" :active="request()->routeIs('post.create')">
                 {{ ('Crear post') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('categoria.index')" :active="request()->routeIs('categoria.index')">
+                {{ ('Crear Categoria') }}
             </x-responsive-nav-link>
         </div>
 
