@@ -40,6 +40,9 @@ Route::get('/post/{id}/edit', [PostController::class, 'edit'])->name('post.edit'
 // Guarda los cambios sobre una Post
 Route::put('/post/{id}', [PostController::class, 'update'])->name('post.update');
 
+//Ver mis posts
+Route::get('/post/misPosts', [PostController::class, 'misPosts'])->name('post.misPosts');
+
 
 
 

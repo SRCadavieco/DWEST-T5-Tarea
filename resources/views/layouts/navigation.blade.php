@@ -28,11 +28,16 @@
                         {{ ('Nuevo post') }}
                     </x-nav-link>
                 </div>
-                @endauth
-                @auth
+                
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('categoria.index')" :active="request()->routeIs('categoria.index')">
                         {{ ('Crear Categoria') }}
+                    </x-nav-link>
+                </div>
+               
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('post.misPosts')" :active="request()->routeIs('post.misPosts')">
+                        {{ ('Mis Posts') }}
                     </x-nav-link>
                 </div>
                 @endauth
@@ -105,6 +110,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('categoria.index')" :active="request()->routeIs('categoria.index')">
                 {{ ('Crear Categoria') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('post.misPosts')" :active="request()->routeIs('post.misPosts')">
+                {{ ('Ver mis Posts') }}
             </x-responsive-nav-link>
         </div>
 

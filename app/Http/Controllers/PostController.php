@@ -94,4 +94,16 @@ class PostController extends Controller
 
         return redirect()->route('post.index')->with('success', 'post eliminada con éxito');
     }
+    //Cree esta funcion para filtrar mis posts
+    public function misPosts()
+    {
+        // Obtener el ID del usuario autenticado
+        $userId = Auth::id();
+
+        // Recuperar los posts del usuario autenticado
+        $posts = Post::where('user_id', $userId)->get();
+
+        // Retornar la vista con los posts del usuario
+        return view('post.misPosts', compact('posts'));
+    }
 }
