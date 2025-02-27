@@ -30,5 +30,6 @@ class PostSeeder extends Seeder
             'user_id' => 1,
             'categoria_id'=>1,
         ]);
+        Post::factory()->count(10)->create();
     }
 }

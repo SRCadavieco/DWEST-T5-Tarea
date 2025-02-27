@@ -22,5 +22,6 @@ class CategoriaSeeder extends Seeder
         Categoria::create([
             'nombre'=>'Politica'
         ]);
+        Categoria::factory()->count(10)->create();
     }
 }

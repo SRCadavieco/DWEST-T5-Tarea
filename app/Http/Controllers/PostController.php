@@ -12,7 +12,8 @@ use function Pest\Laravel\post;
 class PostController extends Controller
 {
     public function index(){
-        $post = Post::all();
+        
+        $post = Post::orderBy('created_at','desc')->paginate(5);;
         return view('post.index',compact('post'));
     }
     public function create()
