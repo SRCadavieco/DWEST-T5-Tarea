@@ -2,7 +2,7 @@
     <x-slot name="header">
         <h2 class="text-2xl font-bold text-gray-800">Todos los posts</h2>
     </x-slot>
-    <div class="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16 space-y-5">
+    < class="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16 space-y-5">
         @foreach ($post as $entrada)
         <div class="bg-white shadow-lg rounded-lg overflow-hidden flex items-start p-5 space-x-5">
             @if ($entrada->image)
@@ -29,5 +29,11 @@
             </div>
         </div>
         @endforeach
+        
+        
+                <div class="mt-4">
+                    {{ $post->links() }}
+                </div>
+        
     </div>
 </x-app-layout>
